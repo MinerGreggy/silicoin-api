@@ -1,0 +1,27 @@
+{
+    "name": "silicoin-api",
+    "version": "2.2.3",
+    "repository": "https://github.com/MinerGreggy/silicoin-api.git",
+    "bugs": "https://github.com/MinerGreggy/silicoin-api/issues",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "json-bigint": "^1.0.0",
+        "ws": "^7.5.0"
+    },
+    "main": "index.js",
+    "engines": {
+        "node": ">=12.0.0"
+    },
+    "description": "silicoin-Api",
+    "homepage": "https://github.com/MinerGreggy/silicoin-api#readme",
+    "directories": {
+        "lib": "lib"
+    },
+    "keywords": [
+        "silicoin",
+        "blockchain",
+        "chiadashboard",
+        "silicoindashboard"
+    ],
+    "author": "MinerGreggy"
+}
