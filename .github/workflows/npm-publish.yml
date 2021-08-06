@@ -8,22 +8,8 @@ on:
 jobs:
   release-npm:
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, 'Release')"
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - uses: flood-io/is-published-on-npm@v1
-        id: is-published
-      - name: Upadate Release Tags
-        if: ${{ steps.is-published.outputs.published == 'false' }}
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.is-published.outputs.version }}
-          release_name: Release ${{ steps.is-published.outputs.version }}
-          draft: false
-          prerelease: false
-
       - name: Checkout The Repo
         uses: actions/checkout@v2
       - name: Set Up Node.js 12.x
@@ -32,7 +18,8 @@ jobs:
           node-version: 12.x
           registry-url: 'https://registry.npmjs.org'
       - name: Publish To NPM
-        if: ${{ steps.is-published.outputs.published == 'false' }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
+        
+        
